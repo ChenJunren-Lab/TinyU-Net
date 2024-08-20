@@ -50,14 +50,12 @@ class CMRF(nn.Module):
         
         self.all_group = n+1
         self.c         = int(c2 * e / self.all_group)
+        self.add       = shortcut and c1 == c2
         
         self.pwconv1   = Conv(c1, c2//self.all_group, 1, 1)
         self.pwconv2   = Conv(c2//2, c2, 1, 1)
-        
         self.m         = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(n))
 
-        self.add = shortcut and c1 == c2
-        
     def forward(self, x):
         """Forward pass through CMRF Module."""
         x_residual = x
@@ -68,7 +66,7 @@ class CMRF(nn.Module):
         x[0]       = x[0] +  x[1] 
         x.pop(1)
         
-        c = torch.cat(x, dim=1) 
+        c          = torch.cat(x, dim=1) 
         c          = self.pwconv2(c)
         return x_residual + c if self.add else c
 
