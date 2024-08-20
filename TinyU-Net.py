@@ -138,10 +138,10 @@ class TinyUNet(nn.Module):
 
 
 if __name__ == '__main__':
-    model = TinyUNet(in_channels=3, num_classes=2)
+    model         = TinyUNet(in_channels=3, num_classes=2)
 
     device        = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model      = model.to(device)
+    model         = model.to(device)
 
     # summary(model, (3, 256, 256))
         
