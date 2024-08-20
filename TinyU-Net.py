@@ -138,15 +138,15 @@ class TinyUNet(nn.Module):
 
 
 if __name__ == '__main__':
-    tinyunet = TinyUNet(in_channels=3, num_classes=2)
+    model = TinyUNet(in_channels=3, num_classes=2)
 
     device        = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    tinyunet      = tinyunet.to(device)
+    model      = model.to(device)
 
-    # summary(tinyunet, (3, 256, 256))
+    # summary(model, (3, 256, 256))
         
     dummy_input   = torch.randn(1, 3, 256, 256).to(device)
-    flops, params = profile(tinyunet, (dummy_input, ), verbose=False)
+    flops, params = profile(model, (dummy_input, ), verbose=False)
     #-------------------------------------------------------------------------------#
     #   flops * 2 because profile does not consider convolution as two operations.
     #-------------------------------------------------------------------------------#
