@@ -19,6 +19,7 @@ def autopad(k, p=None, d=1):
         p = k // 2 if isinstance(k, int) else [x // 2 for x in k] # auto-pad
     return p
 
+
 class Conv(nn.Module):
     """Standard convolution with args(ch_in, ch_out, kernel, stride, paddin g, groups, dilation, activation)."""
     default_act = nn.GELU()
@@ -33,7 +34,8 @@ class Conv(nn.Module):
 
     def forward_fuse(self, x):
         return self.act(self.conv(x))
-    
+
+
 class DWConv(Conv):
     """Depth-wise convolution with args(ch_in, ch_out, kernel, stride, dilation, activation)."""
     def __init__(self, c1, c2, k=1, s=1, d=1, act=True):
@@ -47,33 +49,28 @@ class CMRF(nn.Module):
         super().__init__()
         
         self.all_group = n+1
-        self.c = int(c2 * e / self.all_group)
+        self.c         = int(c2 * e / self.all_group)
         
-        self.pwconv1 = Conv(c1, c2//self.all_group, 1, 1)
-        self.pwconv2 = Conv(c2//2, c2, 1, 1)
+        self.pwconv1   = Conv(c1, c2//self.all_group, 1, 1)
+        self.pwconv2   = Conv(c2//2, c2, 1, 1)
         
-        self.m = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(n))
+        self.m         = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(n))
 
-        self.add = shortcut  and c1 == c2
-        
+        self.add = shortcut and c1 == c2
         
     def forward(self, x):
         """Forward pass through CMRF Module."""
         x_residual = x
-        x = self.pwconv1(x)
+        x          = self.pwconv1(x)
 
-        x = [x[:, 0::2, :, :], x[:, 1::2, :, :]]
+        x          = [x[:, 0::2, :, :], x[:, 1::2, :, :]]
         x.extend(m(x[-1]) for m in self.m)
-        x[0] = x[0] +  x[1] 
+        x[0]       = x[0] +  x[1] 
         x.pop(1)
         
         c = torch.cat(x, dim=1) 
-        c = self.pwconv2(c)
-        
+        c          = self.pwconv2(c)
         return x_residual + c if self.add else c
-
-
-
 
 
 '''
@@ -87,8 +84,7 @@ class UNetEncoder(nn.Module):
         self.downsample = nn.MaxPool2d(kernel_size=2, stride=2)
         
     def forward(self, x):
-        x               = self.cmrf(x)
-
+        x = self.cmrf(x)
         return self.downsample(x), x
     
 
@@ -96,14 +92,13 @@ class UNetEncoder(nn.Module):
 class UNetDecoder(nn.Module):
     def __init__(self, in_channels, out_channels):
         super(UNetDecoder, self).__init__()
-        self.cmrf     = CMRF(in_channels, out_channels)
-        self.upsample = F.interpolate
+        self.cmrf      = CMRF(in_channels, out_channels)
+        self.upsample  = F.interpolate
         
     def forward(self, x, skip_connection):
         x = self.upsample(x, scale_factor=2, mode='bicubic', align_corners=False)
         x = torch.cat([x, skip_connection], dim=1)
         x = self.cmrf(x)
-
         return x
     
 
@@ -111,8 +106,8 @@ class UNetDecoder(nn.Module):
 class TinyUNet(nn.Module):
     def __init__(self, in_channels=3, num_classes=2):
         super(TinyUNet, self).__init__()
-        in_filters  = [192, 384, 768, 1024]
-        out_filters = [64, 128, 256, 512]
+        in_filters      = [192, 384, 768, 1024]
+        out_filters     = [64, 128, 256, 512]
         
         self.encoder1   = UNetEncoder(in_channels, 64)
         self.encoder2   = UNetEncoder(64, 128)
@@ -131,28 +126,28 @@ class TinyUNet(nn.Module):
         x, skip3 = self.encoder3(x)
         x, skip4 = self.encoder4(x)
 
-        x = self.decoder4(x, skip4)
-        x = self.decoder3(x, skip3)
-        x = self.decoder2(x, skip2)
-        x = self.decoder1(x, skip1)
-        x = self.final_conv(x)
+        x        = self.decoder4(x, skip4)
+        x        = self.decoder3(x, skip3)
+        x        = self.decoder2(x, skip2)
+        x        = self.decoder1(x, skip1)
+        x        = self.final_conv(x)
         return x
 
 
 if __name__ == '__main__':
     tinyunet = TinyUNet(in_channels=3, num_classes=2)
 
-    device   = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    tinyunet = tinyunet.to(device)
+    device        = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    tinyunet      = tinyunet.to(device)
 
     # summary(tinyunet, (3, 256, 256))
         
-    dummy_input     = torch.randn(1, 3, 256, 256).to(device)
-    flops, params   = profile(tinyunet, (dummy_input, ), verbose=False)
+    dummy_input   = torch.randn(1, 3, 256, 256).to(device)
+    flops, params = profile(tinyunet, (dummy_input, ), verbose=False)
     #-------------------------------------------------------------------------------#
     #   flops * 2 because profile does not consider convolution as two operations.
     #-------------------------------------------------------------------------------#
-    flops           = flops * 2
-    flops, params   = clever_format([flops, params], "%.4f")
+    flops         = flops * 2
+    flops, params = clever_format([flops, params], "%.4f")
     print(f'Total GFLOPS: {flops}')
     print(f'Total Params: {params}')
