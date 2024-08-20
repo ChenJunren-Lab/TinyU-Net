@@ -35,27 +35,21 @@ class Conv(nn.Module):
         return self.act(self.conv(x))
     
 class DWConv(Conv):
-    """Depth-wise convolution."""
-
-    def __init__(self, c1, c2, k=1, s=1, d=1, act=True):  # ch_in, ch_out, kernel, stride, dilation, activation
+    """Depth-wise convolution with args(ch_in, ch_out, kernel, stride, dilation, activation)."""
+    def __init__(self, c1, c2, k=1, s=1, d=1, act=True):
         super().__init__(c1, c2, k, s, g=math.gcd(c1, c2), d=d, act=act)
 
     
 # Lightweight Cascade Multi-Receptive Fields Module
 class CMRF(nn.Module):
-    """Implementation of CMRF Module."""
-    def __init__(self, c1, c2, n=7, shortcut=True, g=1, e=0.5):  # ch_in, ch_out, number, shortcut, groups, expansion
+    """Implementation of CMRF Module with args(ch_in, ch_out, number, shortcut, groups, expansion)."""
+    def __init__(self, c1, c2, n=7, shortcut=True, g=1, e=0.5):
         super().__init__()
         
-        self.n = n
         self.all_group = n+1
-    
-        self.c = int(c2 * e / self.all_group)  # hidden channels
-        # assert  self.all_group%2 == 0, "self.c should be divided by self.all_group."
-        
+        self.c = int(c2 * e / self.all_group)
         
         self.pwconv1 = Conv(c1, c2//self.all_group, 1, 1)
-        
         self.pwconv2 = Conv(c2//2, c2, 1, 1)
         
         self.m = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(n))
