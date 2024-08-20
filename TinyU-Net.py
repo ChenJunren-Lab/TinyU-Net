@@ -102,7 +102,7 @@ class UNetDecoder(nn.Module):
 
 # TinyU-Net
 class TinyUNet(nn.Module):
-    """TinyU-Net with args(in_channels, num_classes."""
+    """TinyU-Net with args(in_channels, num_classes)."""
     '''
     in_channels: The number of input channels
     num_classes: The number of segmentation classes
