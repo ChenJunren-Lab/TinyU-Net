@@ -44,7 +44,7 @@ class DWConv(Conv):
     
 # Lightweight Cascade Multi-Receptive Fields Module
 class CMRF(nn.Module):
-    """Implementation of CMRF Module with args(ch_in, ch_out, number, shortcut, groups, expansion)."""
+    """CMRF Module with args(ch_in, ch_out, number, shortcut, groups, expansion)."""
     def __init__(self, c1, c2, n=7, shortcut=True, g=1, e=0.5):
         super().__init__()
         
@@ -102,6 +102,11 @@ class UNetDecoder(nn.Module):
 
 # TinyU-Net
 class TinyUNet(nn.Module):
+    """CMRF Module with args(in_channels, num_classes."""
+    '''
+    in_channels: The number of input channels
+    num_classes: The number of segmentation classes
+    '''
     def __init__(self, in_channels=3, num_classes=2):
         super(TinyUNet, self).__init__()
         in_filters      = [192, 384, 768, 1024]
