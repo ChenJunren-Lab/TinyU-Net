@@ -66,9 +66,9 @@ class CMRF(nn.Module):
         x[0]       = x[0] +  x[1] 
         x.pop(1)
         
-        c          = torch.cat(x, dim=1) 
-        c          = self.pwconv2(c)
-        return x_residual + c if self.add else c
+        y          = torch.cat(x, dim=1) 
+        y          = self.pwconv2(y)
+        return x_residual + y if self.add else y
 
 
 '''
