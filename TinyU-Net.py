@@ -45,16 +45,16 @@ class DWConv(Conv):
 # Lightweight Cascade Multi-Receptive Fields Module
 class CMRF(nn.Module):
     """CMRF Module with args(ch_in, ch_out, number, shortcut, groups, expansion)."""
-    def __init__(self, c1, c2, n=7, shortcut=True, g=1, e=0.5):
+    def __init__(self, c1, c2, N=8, shortcut=True, g=1, e=0.5):
         super().__init__()
         
-        self.all_group = n+1
-        self.c         = int(c2 * e / self.all_group)
+        self.N         = N
+        self.c         = int(c2 * e / self.N)
         self.add       = shortcut and c1 == c2
         
-        self.pwconv1   = Conv(c1, c2//self.all_group, 1, 1)
+        self.pwconv1   = Conv(c1, c2//self.N, 1, 1)
         self.pwconv2   = Conv(c2//2, c2, 1, 1)
-        self.m         = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(n))
+        self.m         = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(N-1))
 
     def forward(self, x):
         """Forward pass through CMRF Module."""
