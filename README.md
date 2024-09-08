@@ -5,3 +5,7 @@
 Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Better U-Net with Cascaded Multi-Receptive Fields](https://)".
 
 TinyU-Net was early accepted with a score of 5/5/5 (max sore 6/6/6). This paper has been invited for an `ORAL` presentation in addition to POSTER presentation.
+
+## Data
+- [ISIC2018](https://challenge.isic-archive.com/data/#2018)
+- [NCP](http://ncov-ai.big.ac.cn/download?lang=en)
