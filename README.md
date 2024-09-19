@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Language](https://img.shields.io/static/v1?label=By&message=Pytorch&color=red)
 
 Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Better U-Net with Cascaded Multi-Receptive Fields](https://)".
+Junren Chen, Rui Chen, Wei Wang, Junlong Cheng, Lei Zhang, Liangyin Chen
 
 🔥 This paper has been invited for an `ORAL` presentation in addition to POSTER presentation.
 
