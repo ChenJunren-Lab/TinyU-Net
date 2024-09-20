@@ -11,4 +11,4 @@ Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Bett
 - [NCP](http://ncov-ai.big.ac.cn/download?lang=en). Lesion segmentation dataset of the CT slice images from the China Consortium of Chest CT Image Investigation (CC-CCII). A total of 750 CT slices from 150 COVID-19 patients were manually segmented into background, lung field, ground-glass opacity (GGO), and consolidation (CL).
 
 ## Results
-![Qualitative Experimental Results](./assets/Qualitative_experimental_results.png)
+![Qualitative Experimental Results](./assets/Qualitative_experimental_results.png "test title")
