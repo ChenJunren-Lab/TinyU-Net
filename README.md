@@ -10,7 +10,7 @@ Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Bett
 ![Posterl Results](./assets/MICCAI2024-TinyU-Net-Poster.png "Poster")
 
 ## BibTex
-$$
+```bibtex
 @InProceedings{Che_TinyUNet_MICCAI2024,
         author = { Chen, Junren and Chen, Rui and Wang, Wei and Cheng, Junlong and Zhang, Lei and Chen, Liangyin},
         title = { { TinyU-Net: Lighter yet Better U-Net with Cascaded Multi-Receptive Fields } },
@@ -21,7 +21,7 @@ $$
         month = {October},
         page = {pending}
 }
-$$
+```
 
 ## Data
 - [ISIC2018](https://challenge.isic-archive.com/data/#2018). The ISIC2018 dataset consists of images with skin disease lesions (2594 training images, 100 validation images, and 1000 test images).
