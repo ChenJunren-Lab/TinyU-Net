@@ -6,9 +6,6 @@ Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Bett
 
 🔥 This paper (top 2.7%) has been invited for an `ORAL` presentation in addition to a POSTER presentation. 
 
-## Poster
-![Posterl Results](./assets/MICCAI2024-TinyU-Net-Poster.png "Poster")
-
 ## BibTex
 ```bibtex
 @InProceedings{Chen_TinyUNet_MICCAI2024,
@@ -22,6 +19,9 @@ Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Bett
         page = {pending}
 }
 ```
+
+## Poster
+![Posterl Results](./assets/MICCAI2024-TinyU-Net-Poster.png "Poster")
 
 ## Data
 - [ISIC2018](https://challenge.isic-archive.com/data/#2018). The ISIC2018 dataset consists of images with skin disease lesions (2594 training images, 100 validation images, and 1000 test images).
