@@ -16,7 +16,7 @@ Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Bett
         publisher = {Springer Nature Switzerland},
         volume = {LNCS 15009},
         month = {October},
-        page = {626--635}
+        pages = {626--635}
 }
 ```
 
