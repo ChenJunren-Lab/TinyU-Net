@@ -9,8 +9,8 @@ Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Bett
 ## BibTex
 ```bibtex
 @InProceedings{Chen_TinyUNet_MICCAI2024,
-        author    = { Chen, Junren and Chen, Rui and Wang, Wei and Cheng, Junlong and Zhang, Lei and Chen, Liangyin},
-        title     = { { TinyU-Net: Lighter yet Better U-Net with Cascaded Multi-Receptive Fields } },
+        author    = {Chen, Junren and Chen, Rui and Wang, Wei and Cheng, Junlong and Zhang, Lei and Chen, Liangyin},
+        title     = {TinyU-Net: Lighter yet Better U-Net with Cascaded Multi-Receptive Fields},
         booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
         year      = {2024},
         publisher = {Springer Nature Switzerland},
