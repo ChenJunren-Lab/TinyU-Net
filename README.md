@@ -4,7 +4,7 @@
 
 Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter yet Better U-Net with Cascaded Multi-Receptive Fields](https://doi.org/10.1007/978-3-031-72114-4_60)".
 
-🔥 This paper (top 2.7%) has been invited for an `ORAL` presentation in addition to a POSTER presentation. 
+🔥 This paper has been invited for an `ORAL` presentation (2.7%) in addition to a POSTER presentation. 
 
 ## BibTex
 ```bibtex
