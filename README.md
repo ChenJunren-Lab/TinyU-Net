@@ -11,7 +11,7 @@ Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter Yet Bett
 @InProceedings{Chen_TinyUNet_MICCAI2024,
         author    = {Chen, Junren and Chen, Rui and Wang, Wei and Cheng, Junlong and Zhang, Lei and Chen, Liangyin},
         title     = {TinyU-Net: Lighter Yet Better U-Net with Cascaded Multi-receptive Fields},
-        booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
+        booktitle = {Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
         year      = {2024},
         publisher = {Springer Nature Switzerland},
         volume    = {LNCS 15009},
