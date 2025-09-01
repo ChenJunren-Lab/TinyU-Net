@@ -57,7 +57,7 @@ class CMRFM(nn.Module):
         self.m         = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(N-1))
 
     def forward(self, x):
-        """Forward pass through CMRF Module."""
+        """Forward pass through CMRFM Module."""
         x_residual = x
         x          = self.pwconv1(x)
 
