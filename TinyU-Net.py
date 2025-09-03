@@ -43,8 +43,8 @@ class DWConv(Conv):
 
     
 # Lightweight Cascade Multi-Receptive Fields Module
-class CMRFM(nn.Module):
-    """CMRFM Module with args(ch_in, ch_out, number, shortcut, groups, expansion)."""
+class CMRF(nn.Module):
+    """CMRF Module with args(ch_in, ch_out, number, shortcut, groups, expansion)."""
     def __init__(self, c1, c2, N=8, shortcut=True, g=1, e=0.5):
         super().__init__()
         
@@ -57,7 +57,7 @@ class CMRFM(nn.Module):
         self.m         = nn.ModuleList(DWConv(self.c, self.c, k=3, act=False) for _ in range(N-1))
 
     def forward(self, x):
-        """Forward pass through CMRFM Module."""
+        """Forward pass through CMRF Module."""
         x_residual = x
         x          = self.pwconv1(x)
 
@@ -78,11 +78,11 @@ U-shape/U-like Model
 class UNetEncoder(nn.Module):
     def __init__(self, in_channels, out_channels):
         super(UNetEncoder, self).__init__()
-        self.cmrfm       = CMRFM(in_channels, out_channels)
+        self.cmrf       = CMRF(in_channels, out_channels)
         self.downsample = nn.MaxPool2d(kernel_size=2, stride=2)
         
     def forward(self, x):
-        x = self.cmrfm(x)
+        x = self.cmrf(x)
         return self.downsample(x), x
     
 
@@ -90,13 +90,13 @@ class UNetEncoder(nn.Module):
 class UNetDecoder(nn.Module):
     def __init__(self, in_channels, out_channels):
         super(UNetDecoder, self).__init__()
-        self.cmrfm      = CMRFM(in_channels, out_channels)
+        self.cmrf      = CMRF(in_channels, out_channels)
         self.upsample  = F.interpolate
         
     def forward(self, x, skip_connection):
         x = self.upsample(x, scale_factor=2, mode='bicubic', align_corners=False)
         x = torch.cat([x, skip_connection], dim=1)
-        x = self.cmrfm(x)
+        x = self.cmrf(x)
         return x
     
 
