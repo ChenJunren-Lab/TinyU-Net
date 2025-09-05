@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Language](https://img.shields.io/static/v1?label=By&message=Pytorch&color=red)
 
-Official implementation of the `MICCAI 2024` paper "[TinyU-Net: Lighter Yet Better U-Net with Cascaded Multi-receptive Fields](https://doi.org/10.1007/978-3-031-72114-4_60)".
+Official implementation of the `MICCAI 2024` Oral paper "[TinyU-Net: Lighter Yet Better U-Net with Cascaded Multi-receptive Fields](https://doi.org/10.1007/978-3-031-72114-4_60)".
 
 🔥 This paper has been invited for an `ORAL` presentation (2.7%) in addition to a POSTER presentation. 
 
