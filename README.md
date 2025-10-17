@@ -4,11 +4,11 @@
 
 Official implementation of the `MICCAI 2024 Oral` paper "[TinyU-Net: Lighter Yet Better U-Net with Cascaded Multi-receptive Fields](https://doi.org/10.1007/978-3-031-72114-4_60)".
 
-🔥 This paper  has been published at `MICCAI 2024` as an `ORAL` (2.7% of submissions).  
+🔥 This paper  has been published at `MICCAI 2024` as an `Oral` (2.7% of submissions).
 
 ## BibTex
 ```bibtex
-@InProceedings{Chen_TinyUNet_MICCAI2024,
+@InProceedings{Chen_TinyUNet_MICCAI2024Oral,
         author    = {Chen, Junren and Chen, Rui and Wang, Wei and Cheng, Junlong and Zhang, Lei and Chen, Liangyin},
         title     = {TinyU-Net: Lighter Yet Better U-Net with Cascaded Multi-receptive Fields},
         booktitle = {Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
