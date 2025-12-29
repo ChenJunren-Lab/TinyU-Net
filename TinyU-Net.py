@@ -146,11 +146,11 @@ if __name__ == '__main__':
     # summary(model, (3, 256, 256))
         
     dummy_input   = torch.randn(1, 3, 256, 256).to(device)
-    flops, params = profile(model, (dummy_input, ), verbose=False)
+    macs, params = profile(model, (dummy_input, ), verbose=False)
     #-------------------------------------------------------------------------------#
-    #   flops * 2 because profile does not consider convolution as two operations.
+    #   macs * 2 because profile does not consider convolution as two operations.
     #-------------------------------------------------------------------------------#
-    flops         = flops * 2
+    flops         = macs * 2
     flops, params = clever_format([flops, params], "%.4f")
     print(f'Total GFLOPs: {flops}')
     print(f'Total Params: {params}')
