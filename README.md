@@ -4,9 +4,9 @@
 
 Official implementation of the `MICCAI 2024 Oral` paper "[TinyU-Net: Lighter Yet Better U-Net with Cascaded Multi-receptive Fields](https://doi.org/10.1007/978-3-031-72114-4_60)".
 
-🔥 This paper  has been published at `MICCAI 2024` as an `Oral` (2.7% of submissions).
+🔥 This paper  has been published at `MICCAI 2024` as an `Oral` (2.7% of valid submissions).
 
-✨ Our [Neighborhood Self-Dissimilarity Attention for Medical Image Segmentation](https://proceedings.neurips.cc/paper_files/paper/2025/hash/36b80eae70ff629d667f210e13497edf-Abstract-Conference.html) [[Official Implementation](https://github.com/ChenJunren-Lab/Neighborhood-Self-Dissimilarity-Attention)] has been accepted at `NeurIPS 2025` as a `Spotlight` (3% of submissions).  
+✨ Our [Neighborhood Self-Dissimilarity Attention for Medical Image Segmentation](https://proceedings.neurips.cc/paper_files/paper/2025/hash/36b80eae70ff629d667f210e13497edf-Abstract-Conference.html) [[Official Implementation](https://github.com/ChenJunren-Lab/Neighborhood-Self-Dissimilarity-Attention)] has been accepted at `NeurIPS 2025` as a `Spotlight` (3% of valid submissions). 
 
 ## BibTex
 ```bibtex
