@@ -6,7 +6,7 @@ Official implementation of the `MICCAI 2024 Oral` paper "[TinyU-Net: Lighter Yet
 
 🔥 This paper  has been published at `MICCAI 2024` as an `Oral` (2.7% of submissions).
 
-✨ Our [Neighborhood Self-Dissimilarity Attention for Medical Image Segmentation]([https://openreview.net/pdf?id=tBhEHymG1m](https://proceedings.neurips.cc/paper_files/paper/2025/hash/36b80eae70ff629d667f210e13497edf-Abstract-Conference.html) [[Official Implementation](https://github.com/ChenJunren-Lab/Neighborhood-Self-Dissimilarity-Attention)] has been accepted at `NeurIPS 2025` as a `Spotlight` (3% of submissions).  
+✨ Our [Neighborhood Self-Dissimilarity Attention for Medical Image Segmentation](https://proceedings.neurips.cc/paper_files/paper/2025/hash/36b80eae70ff629d667f210e13497edf-Abstract-Conference.html) [[Official Implementation](https://github.com/ChenJunren-Lab/Neighborhood-Self-Dissimilarity-Attention)] has been accepted at `NeurIPS 2025` as a `Spotlight` (3% of submissions).  
 
 ## BibTex
 ```bibtex
